@@ -75,17 +75,16 @@ def funfacts():
 
 def funProgressBar(fraction, total, previous, step = 10):
     current = fraction/total
-    
     if step <=0 or step>=100:
         step = 10
-    probOfFact = max(math.log10(step)/2, 0.25)
+    probOfFact = max(math.log10(step)/2, 0.1)
 
     st = total / (100/step)
 
-    if current != previous and round(current % st) == 0:
+    if round(fraction % st) == 0:
         clear_output(wait=True)
         print("["+'{:_<20}'.format("*"*round(current * 20))+"]")
-        print(f"{round(current * 100)}% COMPLETED")
+        print(f"{round(current * 100)}% completed")
         
         if random.random() <= probOfFact:
             print("In case you're bored waiting:")
